@@ -1,0 +1,10 @@
+.Palette {
+	height: 100vh;
+
+	.palette-colors {
+		height: 90%;
+		display: grid;
+		grid-template-columns: repeat(5, auto);
+		grid-gap: 0.2rem;
+	}
+}

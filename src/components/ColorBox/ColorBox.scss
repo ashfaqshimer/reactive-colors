@@ -1,0 +1,27 @@
+.ColorBox {
+	cursor: pointer;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	text-transform: uppercase;
+	padding: 0.5rem;
+
+	.copy-button {
+		margin: auto;
+		background: #333333;
+		padding: 0.5rem;
+		opacity: 0;
+		border-radius: 5px;
+	}
+
+	.color-info {
+		margin-top: auto;
+		display: flex;
+		justify-content: space-between;
+		font-size: 12px;
+	}
+
+	&:hover .copy-button {
+		opacity: 1;
+	}
+}
