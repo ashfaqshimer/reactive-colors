@@ -1,22 +1,17 @@
 .Palette {
-	height: 100vh;
+	height: 80vh;
 	margin: 0 1rem;
 
 	.palette-colors {
-		height: 90%;
+		height: 100%;
 		display: grid;
 		grid-template-columns: repeat(5, auto);
 		grid-gap: 0.2rem;
 	}
 }
 
-.slider {
-	padding: 1rem;
-	width: 50%;
-	.rc-slider-rail {
-		height: 8px;
-	}
-	.rc-slider-handle {
-		background: peachpuff;
-	}
+.palette-footer {
+	border-top: 1px solid peru;
+	margin-top: 2px;
+	text-align: center;
 }
