@@ -1,10 +1,22 @@
 .Palette {
 	height: 100vh;
+	margin: 0 1rem;
 
 	.palette-colors {
 		height: 90%;
 		display: grid;
 		grid-template-columns: repeat(5, auto);
 		grid-gap: 0.2rem;
+	}
+}
+
+.slider {
+	padding: 1rem;
+	width: 50%;
+	.rc-slider-rail {
+		height: 8px;
+	}
+	.rc-slider-handle {
+		background: peachpuff;
 	}
 }

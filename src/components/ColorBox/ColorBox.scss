@@ -12,6 +12,7 @@
 		padding: 0.5rem;
 		opacity: 0;
 		border-radius: 5px;
+		transition: all 0.5s ease;
 	}
 
 	.color-info {
@@ -21,7 +22,26 @@
 		font-size: 12px;
 	}
 
+	&:hover {
+		transform: scale(1.1);
+	}
+
 	&:hover .copy-button {
 		opacity: 1;
+	}
+
+	&.copied {
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		transition: all 0.5s ease-in-out;
+
+		h1 {
+			background: peachpuff;
+			color: #333333;
+			padding: 0.5rem;
+		}
 	}
 }

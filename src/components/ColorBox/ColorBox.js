@@ -6,12 +6,25 @@ import './ColorBox.scss';
 class ColorBox extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = { copied: false };
+		this.handleCopy = this.handleCopy.bind(this);
 	}
+
+	handleCopy() {
+		this.setState({ copied: true }, () => {
+			setTimeout(() => this.setState({ copied: false }), 1500);
+		});
+	}
+
 	render() {
 		const { color, name } = this.props;
-		return (
-			<CopyToClipboard text={color}>
+		return this.state.copied ? (
+			<div className='ColorBox copied' style={{ background: color }}>
+				<h3>copied</h3>
+				<p>{color}</p>
+			</div>
+		) : (
+			<CopyToClipboard text={color} onCopy={this.handleCopy}>
 				<div className='ColorBox' style={{ background: color }}>
 					<h3 className='copy-button'>Copy</h3>
 					<div className='color-info'>
