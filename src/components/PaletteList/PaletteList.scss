@@ -1,0 +1,13 @@
+.PaletteList {
+	.palettes-container {
+		padding: 1rem;
+		margin: 0.5rem 2rem;
+		display: grid;
+		grid-gap: 1rem;
+		grid-template-columns: repeat(5, auto);
+	}
+	a {
+		text-decoration: none;
+		// display: inline;
+	}
+}

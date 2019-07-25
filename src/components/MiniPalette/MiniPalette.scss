@@ -1,0 +1,13 @@
+.MiniPalette {
+	border: 1px solid peru;
+	border-radius: 5px;
+	padding: 0.5rem;
+	.colors-container {
+		display: grid;
+		grid-template-columns: repeat(5, auto);
+
+		.color-box {
+			padding: 1rem;
+		}
+	}
+}
