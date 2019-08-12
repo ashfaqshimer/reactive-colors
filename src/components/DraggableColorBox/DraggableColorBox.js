@@ -8,9 +8,10 @@ class DraggableColorBox extends Component {
 		this.state = {};
 	}
 	render() {
+		const { name, color } = this.props;
 		return (
-			<div className='DraggableColorBox' style={{ background: this.props.color }}>
-				{this.props.color}
+			<div className='DraggableColorBox' style={{ background: color }}>
+				{name}
 			</div>
 		);
 	}
