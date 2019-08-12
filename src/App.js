@@ -6,6 +6,7 @@ import Palette from './components/Palette/Palette';
 import seedColors from './seedColors';
 import { generatePalette } from './helpers/colorHelpers';
 import PaletteList from './components/PaletteList/PaletteList';
+import PaletteShades from './components/PaletteShades/PaletteShades';
 
 function App() {
 	const findPalette = (id) => {
@@ -15,18 +16,32 @@ function App() {
 	};
 	return (
 		<Switch>
-			<Route exact path='/' render={() => <PaletteList palettes={seedColors} />} />
+			<Route
+				exact
+				path='/'
+				render={(routeProps) => <PaletteList {...routeProps} palettes={seedColors} />}
+			/>
 			<Route
 				exact
 				path='/palette/:id'
 				render={(routeProps) => (
-					<Palette palette={generatePalette(findPalette(routeProps.match.params.id))} />
+					<Palette
+						{...routeProps}
+						palette={generatePalette(findPalette(routeProps.match.params.id))}
+					/>
+				)}
+			/>
+			<Route
+				exact
+				path='/palette/:paletteId/:colorId'
+				render={(routeProps) => (
+					<PaletteShades
+						colorId={routeProps.match.params.colorId}
+						palette={generatePalette(findPalette(routeProps.match.params.paletteId))}
+					/>
 				)}
 			/>
 		</Switch>
-		// <div className='App'>
-		// 	<Palette palette={generatePalette(seedColors[4])} />
-		// </div>
 	);
 }
 

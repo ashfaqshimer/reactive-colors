@@ -9,7 +9,7 @@ class MiniPalette extends Component {
 	render() {
 		const { name, emoji, colors } = this.props;
 		return (
-			<div className='MiniPalette'>
+			<div className='MiniPalette' onClick={this.props.handleClick}>
 				<div className='colors-container'>
 					{colors.map((color) => {
 						return (
@@ -21,7 +21,7 @@ class MiniPalette extends Component {
 						);
 					})}
 				</div>
-				<p>
+				<p className='palette-name'>
 					{name} <span>{emoji}</span>
 				</p>
 			</div>

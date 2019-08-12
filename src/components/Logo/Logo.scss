@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap');
+
+.Logo {
+	font-family: 'Darker Grotesque', sans-serif;
+	padding: 1rem 0.5rem;
+	font-size: 1.5rem;
+	border-right: 1px solid peru;
+	// background: #eceff1;
+	background: rgba(246, 185, 6, 0.6);
+	text-align: center;
+
+	a {
+		text-decoration: none;
+	}
+	.logo-title {
+		color: peru;
+		margin: auto;
+
+		.primary-text {
+			text-transform: uppercase;
+			color: rebeccapurple;
+		}
+	}
+}

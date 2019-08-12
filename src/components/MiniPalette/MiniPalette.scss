@@ -1,7 +1,7 @@
 .MiniPalette {
-	border: 1px solid peru;
 	border-radius: 5px;
 	padding: 0.5rem;
+	background: white;
 	.colors-container {
 		display: grid;
 		grid-template-columns: repeat(5, auto);
@@ -9,5 +9,12 @@
 		.color-box {
 			padding: 1rem;
 		}
+	}
+	.palette-name {
+		text-align: center;
+	}
+	&:hover {
+		cursor: pointer;
+		transform: scale(1.1);
 	}
 }

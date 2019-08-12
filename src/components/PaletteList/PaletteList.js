@@ -1,29 +1,36 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import MiniPalette from '../MiniPalette/MiniPalette';
 
 import './PaletteList.scss';
+import Logo from '../Logo/Logo';
 
 class PaletteList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {};
+		this.handleClick = this.handleClick.bind(this);
 	}
+
+	handleClick(id) {
+		this.props.history.push(`/palette/${id}`);
+	}
+
 	render() {
 		const { palettes } = this.props;
 		return (
 			<div className='PaletteList'>
-				<h1>PaletteList Component</h1>
+				<Logo />
 				<div className='palettes-container'>
 					{palettes.map((palette) => {
 						return (
-							<Link key={palette.id} to={`/palette/${palette.id}`}>
-								<MiniPalette
-									name={palette.paletteName}
-									colors={palette.colors}
-									emoji={palette.emoji}
-								/>
-							</Link>
+							<MiniPalette
+								key={palette.id}
+								id={palette.id}
+								name={palette.paletteName}
+								colors={palette.colors}
+								emoji={palette.emoji}
+								handleClick={() => this.handleClick(palette.id)}
+							/>
 						);
 					})}
 				</div>

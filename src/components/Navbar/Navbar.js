@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+
 import Slider from 'rc-slider';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
 import './Navbar.scss';
+import Logo from '../Logo/Logo';
 import 'rc-slider/assets/index.css';
 
 class Navbar extends Component {
@@ -36,27 +37,25 @@ class Navbar extends Component {
 		const { colorMode, open } = this.state;
 		return (
 			<nav className='Navbar'>
-				<div className='logo'>
-					<Link exact to='/'>
-						<span className='primary-text'>Reactive</span> Colors
-					</Link>
-				</div>
-				<div className='slider-container'>
-					<div className='level-indicator'>
-						<p>
-							Level : <span>{level}</span>
-						</p>
+				<Logo />
+				{this.props.slider && (
+					<div className='slider-container'>
+						<div className='level-indicator'>
+							<p>
+								Level : <span>{level}</span>
+							</p>
+						</div>
+						<div className='slider'>
+							<Slider
+								defaultValue={level}
+								min={100}
+								max={900}
+								step={100}
+								onAfterChange={changeLevel}
+							/>
+						</div>
 					</div>
-					<div className='slider'>
-						<Slider
-							defaultValue={level}
-							min={100}
-							max={900}
-							step={100}
-							onAfterChange={changeLevel}
-						/>
-					</div>
-				</div>
+				)}
 				<div className='select-container'>
 					<Select value={colorMode} onChange={this.handleFormatChange}>
 						<MenuItem value='hex'>Hex - #ffffff</MenuItem>

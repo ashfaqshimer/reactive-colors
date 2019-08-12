@@ -1,25 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap');
-
 .Navbar {
 	display: flex;
 	margin-bottom: 0.5rem;
 	height: 10vh;
-
-	.logo {
-		font-family: 'Darker Grotesque', sans-serif;
-		padding: 0.2rem;
-		color: peru;
-		font-size: 1.5rem;
-		border-right: 1px solid peru;
-		background: #eceff1;
-		.primary-text {
-			text-transform: uppercase;
-			color: rebeccapurple;
-		}
-		h3 {
-			margin: auto;
-		}
-	}
 
 	.select-container {
 		margin-left: auto;
