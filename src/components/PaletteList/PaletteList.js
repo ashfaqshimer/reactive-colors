@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MiniPalette from '../MiniPalette/MiniPalette';
+import { Link } from 'react-router-dom';
 
 import './PaletteList.scss';
 import Logo from '../Logo/Logo';
@@ -20,6 +21,9 @@ class PaletteList extends Component {
 		return (
 			<div className='PaletteList'>
 				<Logo />
+				<Link className='create-palette-btn' to='/palette/new'>
+					Create Palette
+				</Link>
 				<div className='palettes-container'>
 					{palettes.map((palette) => {
 						return (
