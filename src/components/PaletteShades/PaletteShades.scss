@@ -2,20 +2,16 @@
 	height: 100vh;
 	overflow: hidden;
 	.palette-colors {
-		height: 80%;
+		height: 75%;
 		display: grid;
 		grid-template-columns: repeat(5, auto);
 		grid-gap: 0.2rem;
 	}
 	.back-box {
+		height: 10rem;
 		text-align: center;
 		background: rgb(2, 0, 36);
-		background: linear-gradient(
-			149deg,
-			rgba(2, 0, 36, 1) 20%,
-			rgba(71, 71, 157, 1) 53%,
-			rgba(0, 212, 255, 1) 100%
-		);
+		background: white;
 		display: flex;
 		align-items: center;
 		justify-content: center;
