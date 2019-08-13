@@ -10,6 +10,8 @@ import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Link } from 'react-router-dom';
 
+import './PaletteFormNav.scss';
+
 class PaletteFormNav extends Component {
 	constructor(props) {
 		super(props);
@@ -32,7 +34,7 @@ class PaletteFormNav extends Component {
 		const { classes, open, savePalette, handleDrawerOpen } = this.props;
 		const { newPaletteName } = this.state;
 		return (
-			<div>
+			<div className='PaletteFormNav'>
 				<CssBaseline />
 				<AppBar
 					position='fixed'
@@ -53,7 +55,10 @@ class PaletteFormNav extends Component {
 						<Typography variant='h6' color='inherit' noWrap>
 							Create Palette
 						</Typography>
-						<ValidatorForm onSubmit={() => savePalette(newPaletteName)}>
+						<ValidatorForm
+							className='validator-form'
+							onSubmit={() => savePalette(newPaletteName)}
+						>
 							<TextValidator
 								label='Palette Name'
 								value={newPaletteName}
