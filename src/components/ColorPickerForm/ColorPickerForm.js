@@ -3,6 +3,8 @@ import Button from '@material-ui/core/Button';
 import { ChromePicker } from 'react-color';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
+import './ColorPickerForm.scss';
+
 class ColorPickerForm extends Component {
 	constructor(props) {
 		super(props);
@@ -15,7 +17,7 @@ class ColorPickerForm extends Component {
 		);
 
 		ValidatorForm.addValidationRule('isColorUnique', (value) =>
-			this.props.colors.every(({ color }) => color !== this.props.currentColor)
+			this.props.colors.every(({ color }) => color !== this.state.currentColor)
 		);
 	}
 
@@ -41,13 +43,17 @@ class ColorPickerForm extends Component {
 		const { currentColor, newColorName } = this.state;
 
 		return (
-			<div>
+			<div className='ColorPickerForm'>
 				<ChromePicker color={currentColor} onChangeComplete={this.updateCurrentColor} />
-				<ValidatorForm onSubmit={this.addNewColor}>
+				<ValidatorForm className='add-color-form' onSubmit={this.addNewColor}>
 					<TextValidator
+						className='add-color-input'
 						value={newColorName}
 						name='newColorName'
 						onChange={this.handleChange}
+						variant='filled'
+						margin='normal'
+						placeholder='Color Name'
 						validators={[ 'required', 'isColorNameUnique', 'isColorUnique' ]}
 						errorMessages={[
 							'This field is required.',

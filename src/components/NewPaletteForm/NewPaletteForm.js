@@ -14,7 +14,7 @@ import DraggableColorList from '../DraggableColorList/DraggableColorList';
 import PaletteFormNav from '../PaletteFormNav/PaletteFormNav';
 import ColorPickerForm from '../ColorPickerForm/ColorPickerForm';
 
-const drawerWidth = 400;
+const drawerWidth = 325;
 
 const styles = (theme) => ({
 	root         : {
@@ -165,25 +165,31 @@ class NewPaletteForm extends Component {
 						</IconButton>
 					</div>
 					<Divider />
-					<Typography variant='h4'>Design Your Palette</Typography>
-					<div>
-						<Button variant='contained' color='secondary' onClick={this.clearColors}>
-							Clear Palette
-						</Button>
-						<Button
-							variant='contained'
-							color='primary'
-							onClick={this.addRandomColor}
-							disabled={paletteFull}
-						>
-							Random Color
-						</Button>
+					<div className='sidebar'>
+						<Typography variant='h4'>Design Your Palette</Typography>
+						<div className='buttons-container'>
+							<Button
+								variant='contained'
+								color='secondary'
+								onClick={this.clearColors}
+							>
+								Clear Palette
+							</Button>
+							<Button
+								variant='contained'
+								color='primary'
+								onClick={this.addRandomColor}
+								disabled={paletteFull}
+							>
+								Random Color
+							</Button>
+						</div>
+						<ColorPickerForm
+							paletteFull={paletteFull}
+							colors={colors}
+							addNewColor={this.addNewColor}
+						/>
 					</div>
-					<ColorPickerForm
-						paletteFull={paletteFull}
-						colors={colors}
-						addNewColor={this.addNewColor}
-					/>
 				</Drawer>
 				<main
 					className={classNames(classes.content, {

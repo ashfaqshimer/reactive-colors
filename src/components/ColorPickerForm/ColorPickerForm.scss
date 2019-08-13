@@ -1,0 +1,13 @@
+.ColorPickerForm {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+
+	.add-color-form {
+		display: flex;
+		flex-direction: column;
+		padding: 1rem;
+		justify-content: space-evenly;
+	}
+}

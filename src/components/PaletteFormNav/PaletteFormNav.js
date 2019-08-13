@@ -41,7 +41,7 @@ class PaletteFormNav extends Component {
 					color='default'
 					className={classNames(classes.appBar, {
 						[classes.appBarShift]: open
-					})}
+					})} 
 				>
 					<Toolbar className='Toolbar' disableGutters={!open}>
 						<IconButton
