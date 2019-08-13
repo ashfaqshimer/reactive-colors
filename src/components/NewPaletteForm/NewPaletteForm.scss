@@ -1,6 +1,19 @@
+.Toolbar {
+	display: block;
+}
+
 .palette-colors {
-	height: 80vh;
+	margin-top: 2rem;
+	height: 70vh;
 	display: grid;
 	grid-template-columns: repeat(5, auto);
 	grid-gap: 0.2rem;
+}
+
+.button-group {
+	margin-left: auto;
+
+	button {
+		margin: 0.5rem;
+	}
 }

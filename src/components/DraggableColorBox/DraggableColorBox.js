@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/styles';
+import { SortableElement } from 'react-sortable-hoc';
+import DeleteIcon from '@material-ui/icons/Delete';
 import './DraggableColorBox.scss';
 
 class DraggableColorBox extends Component {
@@ -8,13 +10,16 @@ class DraggableColorBox extends Component {
 		this.state = {};
 	}
 	render() {
-		const { name, color } = this.props;
+		const { name, color, handleDelete } = this.props;
 		return (
 			<div className='DraggableColorBox' style={{ background: color }}>
-				{name}
+				<div className='box-info'>
+					<span>{name}</span>
+					<DeleteIcon className='delete-icon' onClick={handleDelete} />
+				</div>
 			</div>
 		);
 	}
 }
 
-export default DraggableColorBox;
+export default SortableElement(DraggableColorBox);
