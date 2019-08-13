@@ -1,7 +1,7 @@
 .DraggableColorList {
 	margin-top: 2rem;
-	height: 70vh;
+	height: 100%;
 	display: grid;
 	grid-template-columns: repeat(5, auto);
-	grid-gap: 0.2rem;
+	grid-gap: 0.1rem;
 }
