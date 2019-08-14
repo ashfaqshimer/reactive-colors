@@ -12,9 +12,11 @@ import NewPaletteForm from './components/NewPaletteForm/NewPaletteForm';
 class App extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { palettes: seedColors };
+		const savedPalettes = JSON.parse(window.localStorage.getItem('palettes'));
+		this.state = { palettes: savedPalettes || seedColors };
 		this.findPalette = this.findPalette.bind(this);
 		this.savePalette = this.savePalette.bind(this);
+		this.deletePalette = this.deletePalette.bind(this);
 	}
 
 	findPalette(id) {
@@ -23,9 +25,18 @@ class App extends Component {
 		});
 	}
 
+	deletePalette(id) {
+		console.log('delete palette called', id);
+		const filteredPalettes = this.state.palettes.filter((palette) => palette.id !== id);
+		this.setState({ palettes: filteredPalettes }, this.syncLocalStorage);
+	}
+
 	savePalette(palette) {
-		this.setState({ palettes: [ ...this.state.palettes, palette ] });
-		console.log(palette);
+		this.setState({ palettes: [ ...this.state.palettes, palette ] }, this.syncLocalStorage);
+	}
+
+	syncLocalStorage() {
+		window.localStorage.setItem('palettes', JSON.stringify(this.state.palettes));
 	}
 
 	render() {
@@ -46,7 +57,11 @@ class App extends Component {
 					exact
 					path='/'
 					render={(routeProps) => (
-						<PaletteList {...routeProps} palettes={this.state.palettes} />
+						<PaletteList
+							{...routeProps}
+							palettes={this.state.palettes}
+							handleDelete={this.deletePalette}
+						/>
 					)}
 				/>
 				<Route

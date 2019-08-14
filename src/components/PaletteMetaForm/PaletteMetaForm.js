@@ -41,7 +41,7 @@ class PaletteMetaForm extends Component {
 
 	render() {
 		const { newPaletteName, emojiFormOpen, paletteNameFormOpen } = this.state;
-		const { savePalette, handleClose } = this.props;
+		const { handleClose } = this.props;
 		return (
 			<div>
 				<Dialog open={emojiFormOpen} onClose={handleClose}>

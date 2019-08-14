@@ -17,13 +17,10 @@ class PaletteList extends Component {
 	}
 
 	render() {
-		const { palettes } = this.props;
+		const { palettes, handleDelete } = this.props;
 		return (
 			<div className='PaletteList'>
 				<Logo />
-				<Link className='create-palette-btn' to='/palette/new'>
-					Create Palette
-				</Link>
 				<div className='palettes-container'>
 					{palettes.map((palette) => {
 						return (
@@ -34,10 +31,14 @@ class PaletteList extends Component {
 								colors={palette.colors}
 								emoji={palette.emoji}
 								handleClick={() => this.handleClick(palette.id)}
+								handleDelete={() => handleDelete(palette.id)}
 							/>
 						);
 					})}
 				</div>
+				<Link className='create-palette-btn' to='/palette/new'>
+					Create New Palette
+				</Link>
 			</div>
 		);
 	}
