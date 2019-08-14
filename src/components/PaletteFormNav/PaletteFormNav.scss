@@ -1,17 +1,11 @@
 .PaletteFormNav {
-	h6 {
-		display: inline-block;
-		width: 20%;
-	}
-	.validator-form {
-		display: flex;
-		justify-content: space-between;
-		width: 100%;
+	.Toolbar {
 		.button-group {
+			display: flex;
 			margin-left: auto;
-
-			button {
-				margin: 0.5rem;
+			padding: 0 1rem;
+			a {
+				margin-right: 1rem;
 			}
 		}
 	}

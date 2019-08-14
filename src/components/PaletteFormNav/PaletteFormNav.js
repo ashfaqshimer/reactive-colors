@@ -1,38 +1,35 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import Button from '@material-ui/core/Button';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { Link } from 'react-router-dom';
 
 import './PaletteFormNav.scss';
+import PaletteMetaForm from '../PaletteMetaForm/PaletteMetaForm';
 
 class PaletteFormNav extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { newPaletteName: '' };
+		this.state = { formShowing: false };
 	}
 
-	componentDidMount() {
-		ValidatorForm.addValidationRule('isPaletteNameUnique', (value) =>
-			this.props.palettes.every(
-				({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
-			)
-		);
-	}
+	handleClickOpen = () => {
+		this.setState({ formShowing: true });
+	};
 
-	handleChange = (evt) => {
-		this.setState({ [evt.target.name]: evt.target.value });
+	handleClose = () => {
+		this.setState({ formShowing: false });
 	};
 
 	render() {
-		const { classes, open, savePalette, handleDrawerOpen } = this.props;
-		const { newPaletteName } = this.state;
+		const { formShowing } = this.state;
+		const { classes, open, savePalette, palettes, handleDrawerOpen } = this.props;
+
 		return (
 			<div className='PaletteFormNav'>
 				<CssBaseline />
@@ -41,7 +38,7 @@ class PaletteFormNav extends Component {
 					color='default'
 					className={classNames(classes.appBar, {
 						[classes.appBarShift]: open
-					})} 
+					})}
 				>
 					<Toolbar className='Toolbar' disableGutters={!open}>
 						<IconButton
@@ -50,37 +47,32 @@ class PaletteFormNav extends Component {
 							onClick={handleDrawerOpen}
 							className={classNames(classes.menuButton, open && classes.hide)}
 						>
-							<MenuIcon />
+							<ChevronRightIcon />
 						</IconButton>
 						<Typography variant='h6' color='inherit' noWrap>
 							Create Palette
 						</Typography>
-						<ValidatorForm
-							className='validator-form'
-							onSubmit={() => savePalette(newPaletteName)}
-						>
-							<TextValidator
-								label='Palette Name'
-								value={newPaletteName}
-								name='newPaletteName'
-								onChange={this.handleChange}
-								validators={[ 'required', 'isPaletteNameUnique' ]}
-								errorMessages={[
-									'Enter a Palette Name',
-									'Palette name already taken'
-								]}
-							/>
-							<div className='button-group'>
-								<Link to='/'>
-									<Button variant='contained' color='secondary'>
-										Go Back
-									</Button>
-								</Link>
-								<Button variant='contained' color='primary' type='submit'>
-									Save Palette
+						<div className='button-group'>
+							<Link to='/'>
+								<Button variant='contained' color='secondary'>
+									Go Back
 								</Button>
-							</div>
-						</ValidatorForm>
+							</Link>
+							<Button
+								variant='contained'
+								color='primary'
+								onClick={this.handleClickOpen}
+							>
+								Save Palette
+							</Button>
+						</div>
+						{formShowing && (
+							<PaletteMetaForm
+								palettes={palettes}
+								savePalette={savePalette}
+								handleClose={this.handleClose}
+							/>
+						)}
 					</Toolbar>
 				</AppBar>
 			</div>

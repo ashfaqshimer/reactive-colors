@@ -10,68 +10,10 @@ import Button from '@material-ui/core/Button';
 import arrayMove from 'array-move';
 
 import './NewPaletteForm.scss';
+import styles from './NewPaletteFormStyles';
 import DraggableColorList from '../DraggableColorList/DraggableColorList';
 import PaletteFormNav from '../PaletteFormNav/PaletteFormNav';
 import ColorPickerForm from '../ColorPickerForm/ColorPickerForm';
-
-const drawerWidth = 325;
-
-const styles = (theme) => ({
-	root         : {
-		display : 'flex'
-	},
-	appBar       : {
-		transition : theme.transitions.create([ 'margin', 'width' ], {
-			easing   : theme.transitions.easing.sharp,
-			duration : theme.transitions.duration.leavingScreen
-		})
-	},
-	appBarShift  : {
-		width      : `calc(100% - ${drawerWidth}px)`,
-		marginLeft : drawerWidth,
-		transition : theme.transitions.create([ 'margin', 'width' ], {
-			easing   : theme.transitions.easing.easeOut,
-			duration : theme.transitions.duration.enteringScreen
-		})
-	},
-	menuButton   : {
-		marginLeft  : 12,
-		marginRight : 20
-	},
-	hide         : {
-		display : 'none'
-	},
-	drawer       : {
-		width      : drawerWidth,
-		flexShrink : 0
-	},
-	drawerPaper  : {
-		width : drawerWidth
-	},
-	drawerHeader : {
-		display        : 'flex',
-		alignItems     : 'center',
-		padding        : '0 8px',
-		...theme.mixins.toolbar,
-		justifyContent : 'flex-end'
-	},
-	content      : {
-		flexGrow   : 1,
-		padding    : theme.spacing(3),
-		transition : theme.transitions.create('margin', {
-			easing   : theme.transitions.easing.sharp,
-			duration : theme.transitions.duration.leavingScreen
-		}),
-		marginLeft : -drawerWidth
-	},
-	contentShift : {
-		transition : theme.transitions.create('margin', {
-			easing   : theme.transitions.easing.easeOut,
-			duration : theme.transitions.duration.enteringScreen
-		}),
-		marginLeft : 0
-	}
-});
 
 class NewPaletteForm extends Component {
 	static defaultProps = {
@@ -103,12 +45,9 @@ class NewPaletteForm extends Component {
 		this.setState({ [evt.target.name]: evt.target.value });
 	};
 
-	savePalette = (newPaletteName) => {
-		const newPalette = {
-			paletteName : newPaletteName,
-			id          : newPaletteName.toLowerCase().replace(/ /g, '-'),
-			colors      : this.state.colors
-		};
+	savePalette = (newPalette) => {
+		newPalette.id = newPalette.paletteName.toLowerCase().replace(/ /g, '-');
+		newPalette.colors = this.state.colors;
 		this.props.savePalette(newPalette);
 		this.props.history.push('/');
 	};
