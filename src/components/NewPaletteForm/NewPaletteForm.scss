@@ -3,16 +3,24 @@
 }
 
 .sidebar {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-	align-items: center;
+	// display: flex;
+	// flex-direction: column;
+	// justify-content: space-evenly;
+	// align-items: center;
+	margin: auto;
 	height: 100%;
-
-	.buttons-container {
-		width: 100%;
+	.form-controls {
 		display: flex;
-		justify-content: space-around;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		.buttons-container {
+			width: 100%;
+			display: flex;
+			justify-content: space-around;
+			margin: 1rem auto;
+		}
 	}
 }
 
@@ -20,10 +28,10 @@ a {
 	text-decoration: none;
 }
 
-.palette-colors {
-	margin-top: 2rem;
-	height: 70vh;
-	display: grid;
-	grid-template-columns: repeat(5, auto);
-	grid-gap: 0.2rem;
-}
+// .palette-colors {
+// 	margin-top: 2rem;
+// 	height: 70vh;
+// 	display: grid;
+// 	grid-template-columns: repeat(5, auto);
+// 	grid-gap: 0.2rem;
+// }

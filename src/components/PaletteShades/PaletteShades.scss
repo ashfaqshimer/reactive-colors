@@ -1,17 +1,20 @@
 .PaletteShades {
-	height: 100vh;
-	overflow: hidden;
+	min-height: 100vh;
+	// overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	.palette-colors {
-		height: 75%;
 		display: grid;
 		grid-template-columns: repeat(5, auto);
 		grid-gap: 0.2rem;
 		padding: 1rem;
+		height: 100%;
 	}
 	.back-box {
 		height: 10rem;
 		text-align: center;
-		background: rgb(2, 0, 36);
+		background: rgb(187, 185, 240);
 		background: white;
 		display: flex;
 		align-items: center;
@@ -26,6 +29,23 @@
 			&:hover {
 				transform: scale(1.1);
 			}
+		}
+	}
+}
+
+@media (max-width: 630px) {
+	.PaletteShades {
+		.palette-colors {
+			grid-template-columns: repeat(3, auto);
+		}
+	}
+}
+
+@media (max-width: 363px) {
+	.PaletteShades {
+		.palette-colors {
+			display: flex;
+			flex-direction: column;
 		}
 	}
 }

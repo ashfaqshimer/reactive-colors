@@ -3,4 +3,24 @@
 	display: grid;
 	grid-template-columns: repeat(5, auto);
 	grid-gap: 0.1rem;
+	margin: 1rem auto;
+}
+
+@media (max-width: 1200px) {
+	.DraggableColorList {
+		grid-template-columns: repeat(3, auto);
+	}
+}
+
+@media (max-width: 900px) {
+	.DraggableColorList {
+		grid-template-columns: repeat(2, auto);
+	}
+}
+
+@media (max-width: 730px) {
+	.DraggableColorList {
+		display: flex;
+		flex-direction: column;
+	}
 }

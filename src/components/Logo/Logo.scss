@@ -5,9 +5,9 @@
 	padding: 1rem 0.5rem;
 	font-size: 1.5rem;
 	border-right: 1px solid peru;
-	// background: #eceff1;
 	background: rgba(246, 185, 6, 0.6);
 	text-align: center;
+	// height: 100%;
 
 	a {
 		text-decoration: none;
@@ -20,5 +20,17 @@
 			text-transform: uppercase;
 			color: rebeccapurple;
 		}
+	}
+}
+
+@media (max-width: 640px) {
+	.Logo {
+		font-size: 1rem;
+	}
+}
+
+@media (max-width: 640px) {
+	.Logo {
+		font-size: 0.8rem;
 	}
 }

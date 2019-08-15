@@ -106,28 +106,30 @@ class NewPaletteForm extends Component {
 					<Divider />
 					<div className='sidebar'>
 						<Typography variant='h4'>Design Your Palette</Typography>
-						<div className='buttons-container'>
-							<Button
-								variant='contained'
-								color='secondary'
-								onClick={this.clearColors}
-							>
-								Clear Palette
-							</Button>
-							<Button
-								variant='contained'
-								color='primary'
-								onClick={this.addRandomColor}
-								disabled={paletteFull}
-							>
-								Random Color
-							</Button>
+						<div className='form-controls'>
+							<div className='buttons-container'>
+								<Button
+									variant='contained'
+									color='secondary'
+									onClick={this.clearColors}
+								>
+									Clear Palette
+								</Button>
+								<Button
+									variant='contained'
+									color='primary'
+									onClick={this.addRandomColor}
+									disabled={paletteFull}
+								>
+									Random Color
+								</Button>
+							</div>
+							<ColorPickerForm
+								paletteFull={paletteFull}
+								colors={colors}
+								addNewColor={this.addNewColor}
+							/>
 						</div>
-						<ColorPickerForm
-							paletteFull={paletteFull}
-							colors={colors}
-							addNewColor={this.addNewColor}
-						/>
 					</div>
 				</Drawer>
 				<main
