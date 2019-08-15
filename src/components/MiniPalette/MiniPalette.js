@@ -11,8 +11,9 @@ class MiniPalette extends Component {
 
 	handleDelete(evt) {
 		evt.stopPropagation();
-		this.props.handleDelete();
+		this.props.openDialog();
 	}
+
 	render() {
 		const { name, emoji, colors, handleClick } = this.props;
 		return (

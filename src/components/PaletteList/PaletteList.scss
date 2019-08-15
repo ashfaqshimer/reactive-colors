@@ -1,3 +1,18 @@
+.item-enter {
+	opacity: 0;
+}
+.item-enter-active {
+	opacity: 1;
+	transition: opacity 500ms ease-in;
+}
+.item-exit {
+	opacity: 1;
+}
+.item-exit-active {
+	opacity: 0;
+	transition: opacity 500ms ease-in;
+}
+
 .PaletteList {
 	background: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
 	height: 100%;
