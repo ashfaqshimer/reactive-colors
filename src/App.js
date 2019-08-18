@@ -99,6 +99,7 @@ class App extends Component {
 										</Page>
 									)}
 								/>
+								<Route render={() => <h1>Invalid URL</h1>} />
 							</Switch>
 						</CSSTransition>
 					</TransitionGroup>

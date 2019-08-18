@@ -22,29 +22,31 @@ class PaletteList extends Component {
 		super(props);
 		this.state = { open: false, deletingId: '' };
 		this.handleClick = this.handleClick.bind(this);
+		this.handleClose = this.handleClose.bind(this);
+		this.handleOpen = this.handleOpen.bind(this);
+		this.handleDelete = this.handleDelete.bind(this);
 	}
 
 	handleClick(id) {
 		this.props.history.push(`/palette/${id}`);
 	}
 
-	handleClose = () => {
+	handleClose() {
 		this.setState({ open: false, deletingId: '' });
-	};
+	}
 
-	handleOpen = (id) => {
+	handleOpen(id) {
 		this.setState({ open: true, deletingId: id });
-	};
+	}
 
-	handleDelete = () => {
+	handleDelete() {
 		this.props.handleDelete(this.state.deletingId);
 		this.handleClose();
-	};
+	}
 
 	render() {
 		const { open } = this.state;
 		const { palettes } = this.props;
-
 		return (
 			<div className="PaletteList">
 				<Logo />
@@ -58,8 +60,8 @@ class PaletteList extends Component {
 									name={palette.paletteName}
 									colors={palette.colors}
 									emoji={palette.emoji}
-									handleClick={() => this.handleClick(palette.id)}
-									openDialog={() => this.handleOpen(palette.id)}
+									handleClick={this.handleClick}
+									openDialog={this.handleOpen}
 								/>
 							</CSSTransition>
 						);
