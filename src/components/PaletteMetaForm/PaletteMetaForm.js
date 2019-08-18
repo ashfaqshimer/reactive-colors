@@ -17,9 +17,7 @@ class PaletteMetaForm extends Component {
 
 	componentDidMount() {
 		ValidatorForm.addValidationRule('isPaletteNameUnique', (value) =>
-			this.props.palettes.every(
-				({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
-			)
+			this.props.palettes.every(({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase())
 		);
 	}
 
@@ -29,6 +27,7 @@ class PaletteMetaForm extends Component {
 			emoji       : emoji.native
 		};
 		this.props.savePalette(newPalette);
+		this.setState({ emojiFormOpen: false });
 	};
 
 	handleChange = (evt) => {
@@ -45,39 +44,32 @@ class PaletteMetaForm extends Component {
 		return (
 			<div>
 				<Dialog open={emojiFormOpen} onClose={handleClose}>
-					<DialogTitle id='form-dialog-title'>Choose Emoji</DialogTitle>
-					<Picker title='Choose an emoji' onSelect={this.handleSubmit} />
+					<DialogTitle id="form-dialog-title">Choose Emoji</DialogTitle>
+					<Picker title="Choose an emoji" onSelect={this.handleSubmit} />
 				</Dialog>
-				<Dialog
-					open={paletteNameFormOpen}
-					onClose={handleClose}
-					aria-labelledby='form-dialog-title'
-				>
-					<DialogTitle id='form-dialog-title'>Save Palette</DialogTitle>
-					<ValidatorForm className='validator-form' onSubmit={this.toggleEmojiForm}>
+				<Dialog open={paletteNameFormOpen} onClose={handleClose} aria-labelledby="form-dialog-title">
+					<DialogTitle id="form-dialog-title">Save Palette</DialogTitle>
+					<ValidatorForm className="validator-form" onSubmit={this.toggleEmojiForm}>
 						<DialogContent>
 							<DialogContentText>
 								Choose a suitable name for the Palette you just created.
 							</DialogContentText>
 							<TextValidator
-								label='Palette Name'
+								label="Palette Name"
 								value={newPaletteName}
-								name='newPaletteName'
+								name="newPaletteName"
 								fullWidth
-								margin='normal'
+								margin="normal"
 								onChange={this.handleChange}
 								validators={[ 'required', 'isPaletteNameUnique' ]}
-								errorMessages={[
-									'Enter a Palette Name',
-									'Palette name already taken'
-								]}
+								errorMessages={[ 'Enter a Palette Name', 'Palette name already taken' ]}
 							/>
 						</DialogContent>
 						<DialogActions>
-							<Button onClick={handleClose} color='primary'>
+							<Button onClick={handleClose} color="primary">
 								Cancel
 							</Button>
-							<Button variant='contained' color='primary' type='submit'>
+							<Button variant="contained" color="primary" type="submit">
 								Save Palette
 							</Button>
 						</DialogActions>

@@ -46,12 +46,12 @@ class PaletteList extends Component {
 		const { palettes } = this.props;
 
 		return (
-			<div className='PaletteList'>
+			<div className="PaletteList">
 				<Logo />
-				<TransitionGroup className='palettes-container'>
+				<TransitionGroup className="palettes-container">
 					{palettes.map((palette) => {
 						return (
-							<CSSTransition key={palette.id} timeout={1000} classNames='item'>
+							<CSSTransition key={palette.id} timeout={1000} classNames="fade">
 								<MiniPalette
 									key={palette.id}
 									id={palette.id}
@@ -59,25 +59,18 @@ class PaletteList extends Component {
 									colors={palette.colors}
 									emoji={palette.emoji}
 									handleClick={() => this.handleClick(palette.id)}
-									// handleDelete={() => handleDelete(palette.id)}
 									openDialog={() => this.handleOpen(palette.id)}
 								/>
 							</CSSTransition>
 						);
 					})}
 				</TransitionGroup>
-				<Link className='create-palette-btn' to='/palette/new'>
+				<Link className="create-palette-btn" to="/palette/new">
 					Create New Palette
 				</Link>
 
-				<Dialog
-					onClose={this.handleClose}
-					aria-labelledby='delete-dialog-title'
-					open={open}
-				>
-					<DialogTitle id='delete-dialog-title'>
-						Are you sure you want to delete this palette?
-					</DialogTitle>
+				<Dialog onClose={this.handleClose} aria-labelledby="delete-dialog-title" open={open}>
+					<DialogTitle id="delete-dialog-title">Are you sure you want to delete this palette?</DialogTitle>
 					<List>
 						<ListItem button onClick={this.handleDelete}>
 							<ListItemAvatar>
@@ -90,7 +83,7 @@ class PaletteList extends Component {
 									<CheckIcon />
 								</Avatar>
 							</ListItemAvatar>
-							<ListItemText primary='Delete' />
+							<ListItemText primary="Delete" />
 						</ListItem>
 
 						<ListItem button onClick={this.handleClose}>
@@ -104,7 +97,7 @@ class PaletteList extends Component {
 									<CloseIcon />
 								</Avatar>
 							</ListItemAvatar>
-							<ListItemText primary='Cancel' />
+							<ListItemText primary="Cancel" />
 						</ListItem>
 					</List>
 				</Dialog>
